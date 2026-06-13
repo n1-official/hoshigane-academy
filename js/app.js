@@ -40,11 +40,11 @@
   /* 形: { [courseId]: { status:'未受講'|'受講中'|'修了', score:Number|null, date:String|null } } */
 
   function defaultPreset() {
-    // デモの肝: shinjin/safety/machining を「修了」でシード（60%）
+    // ゼロから: 全コース「未受講」でスタート（修了率0%）
     return {
-      shinjin:  { status: "修了", score: 100, date: "2026-06-10" },
-      safety:   { status: "修了", score: 80,  date: "2026-06-11" },
-      machining:{ status: "修了", score: 100, date: "2026-06-12" },
+      shinjin:  { status: "未受講", score: null, date: null },
+      safety:   { status: "未受講", score: null, date: null },
+      machining:{ status: "未受講", score: null, date: null },
       measure:  { status: "未受講", score: null, date: null },
       packing:  { status: "未受講", score: null, date: null }
     };
@@ -633,7 +633,7 @@
     if (!link) return;
     link.addEventListener("click", function (e) {
       e.preventDefault();
-      var ok = window.confirm("学習進捗をリセットして、デモの初期状態（修了3コース・60%）に戻します。よろしいですか？");
+      var ok = window.confirm("学習進捗をリセットして、初期状態（全コース未受講・修了率0%）に戻します。よろしいですか？");
       if (!ok) return;
       resetProgress();
       quizState = null;
